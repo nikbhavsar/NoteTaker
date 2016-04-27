@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NoteTaker</string>
+    <string name="app_name">Easy Notes</string>
     <string name="all_deleted">All Notes DEleted</string>
     <string name="are_you_sure">Do you want to delete all notes?</string>
 </resources>

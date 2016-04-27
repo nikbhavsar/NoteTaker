@@ -16,14 +16,16 @@ import android.widget.Toast;
 public class EditorActivity extends AppCompatActivity {
 
     private String action;
-    private EditText editText;
-    private String noteFilter,OldText;
+    private EditText editText,title;
+    private String noteFilter,OldText,oldTitle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
         editText = (EditText) findViewById(R.id.editText);
+        title = (EditText) findViewById(R.id.title);
         Intent intent = getIntent();
       Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
 
@@ -39,6 +41,10 @@ public class EditorActivity extends AppCompatActivity {
             OldText =  cursor.getString(cursor.getColumnIndex(DBOpenHelper.NOTE_TEXT));
             editText.setText(OldText);
             editText.requestFocus();
+            oldTitle =  cursor.getString(cursor.getColumnIndex(DBOpenHelper.NOTE_TITLE));
+            title.setText(oldTitle);
+            title.requestFocus();
+            setTitle("Edit Notes");
 
         }
 
@@ -86,40 +92,44 @@ public class EditorActivity extends AppCompatActivity {
 
     private void finishEditing(){
         String newString = editText.getText().toString().trim();
+        String newTitle = title.getText().toString().trim();
         switch(action){
             case Intent.ACTION_INSERT :
-            if(newString.length()==0){
+
+                if(newString.length()==0){
                 setResult(RESULT_CANCELED);
             }else {
 
-                insertNote(newString);
+                insertNote(newString,newTitle);
             }
                 break;
             case Intent.ACTION_EDIT :
                 if(newString.length() == 0){
                     deleteNote();
                 }
-                else if(OldText.equals(newString)){
+                else if(OldText.equals(newString) && oldTitle.equals(newTitle)){
                     setResult(RESULT_CANCELED);
                 }else{
-                    updateNote(newString);
+                    updateNote(newString,newTitle);
                 }
 
         }
         finish();
     }
 
-    private void updateNote(String Note) {
+    private void updateNote(String Note,String Title) {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.NOTE_TEXT,Note);
+        values.put(DBOpenHelper.NOTE_TITLE,Title);
         getContentResolver().update(NotesProvider.CONTENT_URI,values,noteFilter,null);
         Toast.makeText(this,"Note Updated",Toast.LENGTH_LONG).show();
         setResult(RESULT_OK);
     }
 
-    private void insertNote(String Note) {
+    private void insertNote(String Note,String Title) {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.NOTE_TEXT,Note);
+        values.put(DBOpenHelper.NOTE_TITLE,Title);
         Uri noteUri = getContentResolver().insert(NotesProvider.CONTENT_URI,values);
         setResult(RESULT_OK);
     }

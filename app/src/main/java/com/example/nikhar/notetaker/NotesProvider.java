@@ -18,14 +18,17 @@ public class NotesProvider extends ContentProvider {
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH );
 
     // Constant to identify the requested operation
+    private static final int TITLE = 3;
     private static final int NOTES = 1;
     private static final int NOTES_ID = 2;
 
     public static final String CONTENT_ITEM_TYPE = "notes";
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     static {
+        uriMatcher.addURI(AUTHORITY,BASE_PATH,TITLE);
         uriMatcher.addURI(AUTHORITY,BASE_PATH,NOTES);
         uriMatcher.addURI(AUTHORITY,BASE_PATH + "/#",NOTES_ID);
+
     }
 
     private SQLiteDatabase database;

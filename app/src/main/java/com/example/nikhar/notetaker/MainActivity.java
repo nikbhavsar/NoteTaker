@@ -11,6 +11,7 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AlertDialog;
@@ -20,9 +21,13 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import at.markushi.ui.CircleButton;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final int INTENT_REQUEST_CODE = 1001;
     private CursorAdapter cursorAdapter;
+    CircleButton add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
         getLoaderManager().initLoader(0,null,this);
+        add = (CircleButton) findViewById(R.id.circle);
+        openshowCase(1000);
 
     }
 
@@ -58,8 +65,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.sample_create) {
-            sampledata();
+        if (id == R.id.about) {
+
         }
         else if(id== R.id.delete_all){
             deleteAll();
@@ -91,11 +98,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 .show();
     }
 
-    private void sampledata() {
-        insertNote("Hii This is Simple Note");
-        insertNote("Always working");
-        restartLoader();
-    }
+//    private void sampledata() {
+//        insertNote("Hii This is Simple Note");
+//        insertNote("Always working");
+//        restartLoader();
+//    }
 
     private void restartLoader() {
         getLoaderManager().restartLoader(0,null,this);
@@ -122,8 +129,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         cursorAdapter.swapCursor(null);
 
     }
+    public  void openshowCase(int delay){
+        new MaterialShowcaseView.Builder(this)
+                .setTarget(add)
+                .setTitleText("Welcome to Easy Notes")
+                .setDismissText("GOT IT")
+                .setContentText("Click the Button to Add New Notes")
+                .setDelay(delay) // optional but starting animations immediately in onCreate can make them choppy
+                .singleUse("Add Button") // provide a unique ID used to ensure it is only shown once
+                .show();
+    }
 
     public void openEditorForNewNote(View view) {
+       openshowCase(0);
         Intent intent = new Intent(this,EditorActivity.class);
         startActivityForResult(intent,INTENT_REQUEST_CODE);
     }

@@ -1,7 +1,9 @@
 package com.example.nikhar.notetaker;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +25,7 @@ public class NotesCursorAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        String noteText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.NOTE_TEXT));
+        String noteText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.NOTE_TITLE));
         int pos = noteText.indexOf(10);
         if(pos != -1)
         {
