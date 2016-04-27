@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/sample_create"
+        android:orderInCategory="100"
+        android:title="About"
+        app:showAsAction="never"/>
+    <item android:id="@+id/delete_all"
+        android:orderInCategory="101"
+        android:title="Delete all"
+        app:showAsAction="never"/>
+
+</menu>
