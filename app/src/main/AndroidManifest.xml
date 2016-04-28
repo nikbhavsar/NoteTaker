@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nikhar.notetaker">
+    package="com.gajani.nikhar.EasyNotes">
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.gajani.nikhar.EasyNotes.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,12 +17,12 @@
         </activity>
 
         <provider
-            android:name=".NotesProvider"
-            android:authorities="com.example.nikhar.notetaker"
+            android:name="com.gajani.nikhar.EasyNotes.NotesProvider"
+            android:authorities="com.gajani.nikhar.EasyNotes"
             android:exported="false" />
 
-        <activity android:name=".EditorActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name="com.gajani.nikhar.EasyNotes.EditorActivity"
+            android:parentActivityName="com.gajani.nikhar.EasyNotes.MainActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.nikhar.notetaker;
+package com.gajani.nikhar.EasyNotes;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

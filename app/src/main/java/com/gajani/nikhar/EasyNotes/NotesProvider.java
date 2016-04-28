@@ -1,4 +1,4 @@
-package com.example.nikhar.notetaker;
+package com.gajani.nikhar.EasyNotes;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -13,7 +13,7 @@ import android.support.annotation.Nullable;
  */
 public class NotesProvider extends ContentProvider {
 
-    private static final String AUTHORITY = "com.example.nikhar.notetaker";
+    private static final String AUTHORITY = "com.gajani.nikhar.EasyNotes";
     private static final String BASE_PATH = "notes";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH );
 

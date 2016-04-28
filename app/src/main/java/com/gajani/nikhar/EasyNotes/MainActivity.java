@@ -1,4 +1,4 @@
-package com.example.nikhar.notetaker;
+package com.gajani.nikhar.EasyNotes;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -11,9 +11,7 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.CursorAdapter;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -65,10 +63,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.about) {
 
-        }
-        else if(id== R.id.delete_all){
+         if(id== R.id.delete_all){
             deleteAll();
         }
         return super.onOptionsItemSelected(item);

@@ -1,9 +1,7 @@
-package com.example.nikhar.notetaker;
+package com.gajani.nikhar.EasyNotes;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.Cursor;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

@@ -1,10 +1,9 @@
-package com.example.nikhar.notetaker;
+package com.gajani.nikhar.EasyNotes;
 
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Parcelable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +16,7 @@ public class EditorActivity extends AppCompatActivity {
 
     private String action;
     private EditText editText,title;
-    private String noteFilter,OldText,oldTitle;
+    private String noteFilter,OldText,oldTitle,newTitle,newString;
 
 
     @Override
@@ -78,6 +77,16 @@ public class EditorActivity extends AppCompatActivity {
             case R.id.delete :
                 deleteNote();
                 break;
+            case R.id.share :
+                EditText ttt = (EditText) findViewById(R.id.title);
+                EditText text = (EditText) findViewById(R.id.editText);
+                String txt = text.getText().toString().trim();
+                String tttt = ttt.getText().toString().trim();
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT,tttt +"\n"+ txt);
+                startActivity(Intent.createChooser(sharingIntent,"Share using"));
+                break;
         }
 
         return true;
@@ -91,8 +100,8 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     private void finishEditing(){
-        String newString = editText.getText().toString().trim();
-        String newTitle = title.getText().toString().trim();
+        newString = editText.getText().toString().trim();
+        newTitle = title.getText().toString().trim();
         switch(action){
             case Intent.ACTION_INSERT :
 

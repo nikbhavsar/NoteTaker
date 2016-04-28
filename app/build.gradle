@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.example.nikhar.notetaker"
+        applicationId "com.gajani.nikhar.EasyNotes"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
