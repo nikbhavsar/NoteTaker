@@ -1,36 +1,61 @@
 package com.gajani.nikhar.EasyNotes;
 
+import android.annotation.TargetApi;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 
 public class EditorActivity extends AppCompatActivity {
 
     private String action;
-    private EditText editText,title;
+    private EditText title;
+    LineEditText editText;
+    ImageView imageView;
     private String noteFilter,OldText,oldTitle,newTitle,newString;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
-        editText = (EditText) findViewById(R.id.editText);
+        editText = (LineEditText) findViewById(R.id.editText);
         title = (EditText) findViewById(R.id.title);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/imrock.ttf");
+        editText.setTypeface(typeface);
+        imageView = (ImageView) findViewById(R.id.edit_note);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                title.setEnabled(true);
+                editText.setEnabled(true);
+                imageView.setVisibility(View.INVISIBLE);
+            }
+        });
         Intent intent = getIntent();
-      Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
+        Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
 
         if(uri == null){
             action = intent.ACTION_INSERT;
             setTitle("New Note");
+            title.setEnabled(true);
+            editText.setEnabled(true);
+            imageView.setVisibility(View.INVISIBLE);
         } else {
 
             action = Intent.ACTION_EDIT;
@@ -105,12 +130,14 @@ public class EditorActivity extends AppCompatActivity {
         switch(action){
             case Intent.ACTION_INSERT :
 
-                if(newString.length()==0){
-                setResult(RESULT_CANCELED);
-            }else {
+                if(newString.length()==0 && newTitle.length()==0){
+                    setResult(RESULT_CANCELED);
+                }else
+                {
 
-                insertNote(newString,newTitle);
-            }
+                    insertNote(newString,newTitle);
+                }
+
                 break;
             case Intent.ACTION_EDIT :
                 if(newString.length() == 0){
@@ -142,6 +169,7 @@ public class EditorActivity extends AppCompatActivity {
         Uri noteUri = getContentResolver().insert(NotesProvider.CONTENT_URI,values);
         setResult(RESULT_OK);
     }
+
 
     @Override
     public void onBackPressed() {
