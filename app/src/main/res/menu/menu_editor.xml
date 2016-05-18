@@ -2,6 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+   <!-- <item
+        android:id="@+id/spinner"
+        android:title="ActionBar Spinner"
+        app:actionViewClass="android.widget.Spinner"
+        android:background="#ff00"
+        app:showAsAction="always" />-->
+
     <item android:id="@+id/done"
         android:orderInCategory="100"
         android:title="done"
@@ -12,10 +19,11 @@
         android:title="delete"
         android:icon="@drawable/ic_action_delete"
         app:showAsAction="always"/>
-    <item android:id="@+id/share"
-        android:orderInCategory="102"
-        android:title="done"
+    <item
+        android:id="@+id/share"
         android:icon="@drawable/ic_action_share"
+        android:orderInCategory="102"
+        android:title="Share"
         app:showAsAction="always"/>
 
 </menu>

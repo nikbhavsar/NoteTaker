@@ -21,12 +21,14 @@ public class NotesProvider extends ContentProvider {
     private static final int TITLE = 3;
     private static final int NOTES = 1;
     private static final int NOTES_ID = 2;
+    private static final int PRIORITY = 4;
 
     public static final String CONTENT_ITEM_TYPE = "notes";
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     static {
         uriMatcher.addURI(AUTHORITY,BASE_PATH,TITLE);
         uriMatcher.addURI(AUTHORITY,BASE_PATH,NOTES);
+        uriMatcher.addURI(AUTHORITY,BASE_PATH,PRIORITY);
         uriMatcher.addURI(AUTHORITY,BASE_PATH + "/#",NOTES_ID);
 
     }
@@ -55,6 +57,7 @@ public class NotesProvider extends ContentProvider {
     public String getType(Uri uri) {
         return null;
     }
+
 
     @Nullable
     @Override

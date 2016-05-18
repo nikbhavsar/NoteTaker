@@ -18,15 +18,16 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     public static final String NOTE_TEXT = "noteText";
     public static final String NOTE_CREATED = "noteCreated";
     public static final String NOTE_TITLE = "title";
+    public static final String PRIORITY = "priority";
 
-    public static final String[] ALL_COLUMNS = {NOTE_ID,NOTE_TEXT,NOTE_CREATED,NOTE_TITLE};
+    public static final String[] ALL_COLUMNS = {NOTE_ID,NOTE_TEXT,NOTE_CREATED,NOTE_TITLE,PRIORITY};
 
     //SQL to create table
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_NOTES + " (" +
                     NOTE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     NOTE_TEXT + " TEXT, " +
-                    NOTE_CREATED + " TEXT default CURRENT_TIMESTAMP," + NOTE_TITLE + " TEXT " +
+                    NOTE_CREATED + " TEXT default CURRENT_TIMESTAMP," + NOTE_TITLE + " TEXT, " + PRIORITY + " INTEGER " +
                     ")";
     public DBOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
