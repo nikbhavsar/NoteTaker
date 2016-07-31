@@ -8,21 +8,26 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <service android:name=".NotifyService" />
+        <service android:name=".ScheduleService" />
 
         <provider
             android:name=".NotesProvider"
             android:authorities="com.gajani.nikhar.EasyNotes"
             android:exported="false" />
 
-        <activity android:name=".Editor"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Editor"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AlarmActivity" />
+        <activity
+            android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
