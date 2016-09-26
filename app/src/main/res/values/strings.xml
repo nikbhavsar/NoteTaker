@@ -11,4 +11,5 @@
     <string name="tab_date">Date</string>
     <string name="tab_time">Time</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main_activity_nav">MainActivityNav</string>
 </resources>

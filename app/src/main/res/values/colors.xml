@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#673AB7</color>
+    <!--<color name="colorPrimary">#673AB7</color>
     <color name="colorPrimaryDark">#512DA8</color>
+    <color name="colorAccent">#FF5722</color>-->
+
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#FF5722</color>
     <color name="textColor">#FFFFFF</color>
-    <color name="lightPrimaryColor">#D1C4E9</color>
+ <!--   <color name="lightPrimaryColor">#D1C4E9</color>-->
+    <color name="lightPrimaryColor">#BBDEFB</color>
     <color name="list_text">#212121</color>
     <color name="secondaryText">#727272</color>
     <color name="dividor">#B6B6B6</color>
     <color name="back">#FFFFFF</color>
     <color name="lightRed">#FF7F7F</color>
     <color name="notification">#1ABB9C</color>
+    <color name="social">#F56990 </color>
+    <color name="personal">#1FC3B3 </color>
+    <color name="black_semi_transparent">#B2000000</color>
+    <color name="background">#e5e5e5</color>
+    <color name="half_black">#808080</color>
+    <color name="white">#fafafa</color>
+    <color name="white_pressed">#f1f1f1</color>
+    <color name="pink">#e91e63</color>
+    <color name="pink_pressed">#ec407a</color>
+    <color name="blue_semi_transparent">#805677fc</color>
+    <color name="blue_semi_transparent_pressed">#80738ffe</color>
 
 </resources>

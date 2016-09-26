@@ -30,6 +30,9 @@ public class NotesProvider extends ContentProvider {
     private static final int HOUR = 8;
     private static final int MINUTE = 9;
     private static final int ALARM_ID = 10;
+    private static final int K_PASSWORD = 11;
+    private static final int HINT_PASS = 12;
+    private static final int NOTE_TYPE = 13;
 
     public static final String CONTENT_ITEM_TYPE = "notes";
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -44,6 +47,9 @@ public class NotesProvider extends ContentProvider {
         uriMatcher.addURI(AUTHORITY, BASE_PATH, HOUR);
         uriMatcher.addURI(AUTHORITY, BASE_PATH, MINUTE);
         uriMatcher.addURI(AUTHORITY, BASE_PATH, ALARM_ID);
+        uriMatcher.addURI(AUTHORITY, BASE_PATH, K_PASSWORD);
+        uriMatcher.addURI(AUTHORITY, BASE_PATH, HINT_PASS);
+        uriMatcher.addURI(AUTHORITY, BASE_PATH, NOTE_TYPE);
         uriMatcher.addURI(AUTHORITY, BASE_PATH + "/#", NOTES_ID);
 
     }
@@ -96,24 +102,5 @@ public class NotesProvider extends ContentProvider {
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         return database.update(DBOpenHelper.TABLE_NOTES, values, selection, selectionArgs);
     }
-  /*  public Cursor fetchCountriesByName(String inputText) throws SQLException {
 
-        Cursor mCursor = null;
-        if (inputText == null  ||  inputText.length () == 0)  {
-            mCursor = database.query(DBOpenHelper.TABLE_NOTES, DBOpenHelper.ALL_COLUMNS,
-                    null, null, null, null, null);
-
-        }
-        else {
-            mCursor = database.query(true, DBOpenHelper.TABLE_NOTES, DBOpenHelper.ALL_COLUMNS,
-                    DBOpenHelper.NOTE_TITLE + " like '%" + inputText + "%'", null,
-                    null, null, null, null);
-        }
-        if (mCursor != null) {
-            mCursor.moveToFirst();
-        }
-        return mCursor;
-
-    }
-*/
 }

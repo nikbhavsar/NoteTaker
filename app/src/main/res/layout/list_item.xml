@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_height="wrap_content"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
     android:background="@drawable/round_shape"
+    android:id="@+id/layout_list"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
 
@@ -17,7 +18,7 @@
         android:layout_height="45dp" />
 
     <LinearLayout android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
+        android:layout_width="301dp"
         android:orientation="vertical"
         xmlns:android="http://schemas.android.com/apk/res/android" >
 
@@ -49,5 +50,16 @@
         android:layout_marginBottom="5dp"
         android:textSize="15dp"/>
 
+
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/lock"
+        android:layout_width="30dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/lock"
+        android:layout_height="30dp"
+        android:visibility="invisible"
+       />
+
 </LinearLayout>
