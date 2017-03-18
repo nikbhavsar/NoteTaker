@@ -35,7 +35,6 @@
         android:text="Dummy Text"
         android:textStyle="bold"
         android:textColor="@color/list_text"
-        android:fontFamily="sans-serif-condensed"
         android:textSize="23dp" />
 
 

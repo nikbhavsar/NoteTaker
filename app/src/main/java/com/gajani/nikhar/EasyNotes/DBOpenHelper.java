@@ -13,7 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBOpenHelper extends SQLiteOpenHelper {
     //Constants for db name and version
     private static final String DATABASE_NAME ="notes.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 1;
 
     //Constants for identifying table and columns
     public static final String USER_DATA_TABLE = "user";
@@ -58,7 +58,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     private static final String TABLE_USER_CREATE =
             "CREATE TABLE " + USER_DATA_TABLE + " (" +
                     DATA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    USER_NAME + " TEXT, " + USER_EMAIL + " TEXT, " + USER_ANS1 + " TEXT, " + USER_ANS2 + " TEXT, " + MAIN_PASS_HINT + " TEXT, " +USER_PASS + " TEXT" +
+                    USER_NAME + " TEXT, " + USER_EMAIL + " TEXT NOT NULL DEFAULT \'email\', " + USER_ANS1 + " TEXT, " + USER_ANS2 + " TEXT, " + MAIN_PASS_HINT + " TEXT, " +USER_PASS + " TEXT" +
                     ")";
 
     public DBOpenHelper(Context context) {
@@ -117,6 +117,32 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         int numRows = (int) DatabaseUtils.queryNumEntries(db, USER_DATA_TABLE);
         return numRows;
+    }
+
+    public boolean isTableExists(boolean openDb) {
+
+        SQLiteDatabase mDatabase = this.getReadableDatabase();
+
+        if(openDb) {
+            if(mDatabase == null || !mDatabase.isOpen()) {
+                mDatabase = getReadableDatabase();
+            }
+
+            if(!mDatabase.isReadOnly()) {
+                mDatabase.close();
+                mDatabase = getReadableDatabase();
+            }
+        }
+
+        Cursor cursor = mDatabase.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '"+USER_DATA_TABLE+"'", null);
+        if(cursor!=null) {
+            if(cursor.getCount()>0) {
+                cursor.close();
+                return true;
+            }
+            cursor.close();
+        }
+        return false;
     }
 
 }

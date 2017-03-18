@@ -18,65 +18,74 @@
         android:layout_marginBottom="25dp"
         android:id="@+id/textView2" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Please Enter Your Email ID :"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/textView3" />
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <EditText
-        android:background="@drawable/round_button"
+
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:includeFontPadding="true"
         android:paddingLeft="5dp"
+        android:hint="Email"
         android:id="@+id/user_emailId"
         android:layout_marginBottom="25dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Which is your favourite food?"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/textView4" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <EditText
-        android:background="@drawable/round_button"
+
         android:layout_width="match_parent"
         android:includeFontPadding="true"
         android:paddingLeft="5dp"
         android:layout_height="40dp"
         android:id="@+id/answer1"
+        android:hint="Your Favourite food"
         android:layout_marginBottom="25dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Which is ypur favourite destination for holiday?"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/textView5" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <EditText
-        android:background="@drawable/round_button"
+
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:includeFontPadding="true"
         android:paddingLeft="5dp"
+        android:hint="Favourite holiday Destination"
         android:id="@+id/answer2"
         android:layout_marginBottom="25dp"/>
 
+    </android.support.design.widget.TextInputLayout>
+
     <Button
-        android:background="@drawable/round_shape"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Submit Information"
+        android:text="Get Started"
 
         android:id="@+id/button" />
+
+        </LinearLayout>
 
 
 </LinearLayout>

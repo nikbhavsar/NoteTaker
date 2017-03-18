@@ -11,12 +11,12 @@
         yourapp:actionViewClass="android.widget.Spinner" />-->
 
 
-    <item android:id="@+id/delete_all"
+  <!--  <item android:id="@+id/delete_all"
         android:orderInCategory="101"
         android:title="Delete all"
         app:showAsAction="always"
         android:icon="@drawable/ic_action_delete"/>
-
+-->
 
 
 </menu>

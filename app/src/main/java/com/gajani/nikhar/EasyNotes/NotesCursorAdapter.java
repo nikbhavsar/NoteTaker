@@ -2,6 +2,7 @@ package com.gajani.nikhar.EasyNotes;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ public class NotesCursorAdapter extends CursorAdapter implements Filterable {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.listdemo, parent, false);
     }
 
     @Override
@@ -57,41 +58,33 @@ public class NotesCursorAdapter extends CursorAdapter implements Filterable {
 
         }
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageDocIcon);
+        ImageView type = (ImageView) view.findViewById(R.id.typeOfnote);
+
+        LinearLayout layout = (LinearLayout) view.findViewById(R.id.listmainLayout);
+
         if (priority == 1) {
-            imageView.setImageResource(R.drawable.clipyes);
+            layout.setBackgroundResource(R.drawable.edittext2);
         } else {
-            imageView.setImageResource(R.drawable.clip_nop);
+            layout.setBackgroundResource(R.drawable.edittext_bg);
         }
 
         switch (typeOfNote){
 
             case 0:
 
-                l1.setBackgroundColor(view.getResources().getColor(R.color.lightPrimaryColor));
+              type.setBackgroundResource(R.drawable.button);
 
                 break;
             case 1:
-              /*  if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                    //noinspection deprecation
-                    l1.setBackgroundDrawable(view.getResources().getDrawable(R.drawable.social1));
-                } else {
-                    l1.setBackground(view.getResources().getDrawable(R.drawable.social1));
-                }*/
-                l1.setBackgroundColor(view.getResources().getColor(R.color.social));
 
+                type.setBackgroundResource(R.drawable.button1);
 
                 break;
             case 2:
-             /*   if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                    //noinspection deprecation
-                    l1.setBackgroundDrawable(view.getResources().getDrawable(R.drawable.personal));
-                } else {
-                    l1.setBackground(view.getResources().getDrawable(R.drawable.personal));
-                }*/
-                l1.setBackgroundColor(view.getResources().getColor(R.color.personal));
-                break;
 
+                type.setBackgroundResource(R.drawable.button2);
+
+                break;
         }
 
     }
